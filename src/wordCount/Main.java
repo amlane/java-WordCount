@@ -10,29 +10,29 @@ public class Main {
         // Remove punctuation, make lower case and split into each word
         String[] words = myStr.replaceAll("[[\\.\\?\\!\\,\\;\\:\\{\\}\\(\\)\\']]", "").toLowerCase().split(" +");
 
-        System.out.println(words[words.length - 1]);
-
+        // Create a HashMap
         HashMap<String, Integer> wordsHashMap = new HashMap<String, Integer>();
 
+        // Loop through the HashMap of words
         for (String word : words) {
+            // if the HashMap contains the matching key
             if (wordsHashMap.containsKey(word)) {
+                // set hashCount to keys existing count
                 int hashCount = wordsHashMap.get(word);
+                // and replace the existing key and add one to hashcount
                 wordsHashMap.put(word, hashCount + 1);
             } else {
+                // if the word isn't a duplicate add to the HashMap and set to 1
                 wordsHashMap.put(word, 1);
             }
 
         }
-        System.out.println(wordsHashMap.size());
 
-        for (String i : wordsHashMap.keySet()) {
-            System.out.println("key: " + i + ", value: " + wordsHashMap.get(i));
-        }
-        System.out.println();
-
+        // Set HashMap to ArrayList
         ArrayList<HashMap.Entry<String, Integer>> sortedMap = new ArrayList<HashMap.Entry<String, Integer>>();
         sortedMap.addAll(wordsHashMap.entrySet());
 
+        // sort through collection by value (count of duplicates by key)
         Collections.sort(sortedMap, new Comparator<HashMap.Entry<String, Integer>>() {
             public int compare(HashMap.Entry<String, Integer> o1, HashMap.Entry<String, Integer> o2) {
                 return o2.getValue() - o1.getValue();
