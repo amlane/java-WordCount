@@ -20,10 +20,10 @@ public class Main {
                 // set hashCount to keys existing count
                 int hashCount = wordsHashMap.get(word);
                 // and replace the existing key and add one to hashcount
-                wordsHashMap.put(word, hashCount + 5);
+                wordsHashMap.put(word, hashCount + 1);
             } else {
                 // if the word isn't a duplicate add to the HashMap and set to 1
-                wordsHashMap.put(word, 5);
+                wordsHashMap.put(word, 1);
             }
 
         }
@@ -41,7 +41,7 @@ public class Main {
 
         int count = 0;
         for (HashMap.Entry<String, Integer> w : sortedMap) {
-            if (count <= 50) {
+            if (count <= 49) {
                 System.out.println("key: " + w.getKey() + ", value: " + w.getValue());
                 count++;
             }
